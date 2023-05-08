@@ -49,26 +49,14 @@ def change_alay(text):
         change_word = ' '.join([dict_alay[word] if word in dict_alay else word for word in text.split(' ')])
         return change_word
 
-def removeSensor(str):
-    Sensor = 'aiueo'
-    for ele in Sensor:
-        str = str.replace(ele, 'x')
-    return str
-
 #Sensor abusive word
-def sensor_abusive(text):
-    df_abusive = pd.read_sql_query('select * from abusive',conn)
-    dict_abusive = dict(zip(df_abusive['label'],df_abusive['label']))
-    text = text.split()
-    text_normal = ''
-    for str in text:
-        if(bool(str in dict_abusive)):
-            str = removeSensor(str)
-            text_normal = text_normal + ' ' + str
-        else:
-            text_normal = text_normal + ' ' + str  
-    text_normal = text_normal.strip()
-    return text_normal
+def remove_abusive(text):
+    df_abusive = pd.read_sql_query('select * from abusive', conn)
+    list_abusive = df_abusive['label'].to_list()
+    text = text.split(" ") 
+    text = [i for i in text if i not in list_abusive] 
+    text = ' '.join(text) 
+    return text
     
 
 #Function Cleansing
@@ -76,6 +64,6 @@ def cleansing(text):
     
     text = clean_text(text)
     text = change_alay(text)
-    text = sensor_abusive(text)
+    text = remove_abusive(text)
 
     return text

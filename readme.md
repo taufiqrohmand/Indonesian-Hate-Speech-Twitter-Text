@@ -9,17 +9,13 @@
 in this file is a function for cleansing punctuation, change data alay to normal, and remove abusive word:
  * **Cleansing Data Punctuation** : in this function is define for cleansing text from punctuation, web url, word 'user', word 'url', unidecode, and other.
 
- * **Change alay** : in this function id define for change word alay to normal in dataset
+ * **Change alay** : in this function is define for change word alay to normal in dataset
  example change word is :
     * *beud --> banget*
     * *jgn --> jangan*
     * *loe --> kamu*
 
- * **Sensor Abusive** : in this function id define for sensor vocal word (aiueo) abusive word in dataset
- example change word is :
-    * *bego --> bxgx*
-    * *bacot --> bxcxt*
-    * *cebong --> cxbxng*
+ * **Remove Abusive** : in this function is define for remove abusive word form text based on file abusive word
 
 ## API File = main.py
 In this API there are 2 API:
@@ -28,7 +24,7 @@ In this API there are 2 API:
 The output recorded on tha database in table FILE_OUTPUT and **File.CSV** after process can show on local folder in **OUTPUT**
 
 
-
+## API Visualatation with Flask Swagger and Gradio
 
 
 # Citation
